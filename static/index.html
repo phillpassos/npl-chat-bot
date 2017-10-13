@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  </head>
+  <body>   
+
+    <input id="msg"/> <button id="snd">Enviar</button>
+    <ul id="response">
+    </ul>
+
+  </body>
+  <script>
+    $(document).ready(()=>{
+
+      function decode_utf8(s) {
+        try{
+          return decodeURIComponent(escape(s));
+        }
+        catch(e){
+          return s;
+        }
+      }
+
+      $("#msg").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#snd").click();
+        }
+      });
+
+      $.ajaxSetup({
+        contentType: "application/json; charset=utf-8"
+      });
+
+      $("#snd").click((evt)=>{
+        var data = $("#msg").val();
+
+        $.ajax({
+          type: "POST",
+          url: "/",
+          data: JSON.stringify({'msg': data}),
+          dataType: "json"
+        }).done(function(data) {
+          $("ul#response").prepend("<li>" +decode_utf8(data["msg"]) + "</li>");
+          $("#msg").val("").focus();
+        });
+        
+        
+      });
+    });
+  </script>
+</html>

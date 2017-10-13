@@ -1,0 +1,35 @@
+{"intents": [
+    {"tag": "saudacao",
+     "patterns": ["Oi", "Olá", "Alguem", "E aí", "Bom dia", "Boa tarde", "Boa noite"],
+     "responses": ["Olá, bem vindo!", "Em que posso lhe ajudar?", "E aí! Em que posso te ajudar?"],
+     "context_set": ""
+    },
+    {"tag": "despedida",
+     "patterns": ["Tchau", "Até mais", "Adeus"],
+     "responses": ["Até breve, obrigado pela visita", "Tenha um bom dia", "Tchau! Até mais!"]
+    },
+    {"tag": "obrigado",
+     "patterns": ["Obrigado", "Valeu!", "Você é foda"],
+     "responses": ["Estou feliz em ajudar!", "Disponha!", "O prazer é meu"]
+    },
+    {"tag": "quemsoueu",
+     "patterns": ["Quem é você?", "O que é você?"],
+     "responses": ["Sou um prototipo de IA criado a poucos instantes", "Sou um prototipo de IA. Trabalho em progresso"]
+    },
+    {"tag": "piada",
+     "patterns": ["Conte-me uma piada", "Alguma piada?", "Sabe contar piada?" ],
+     "responses": ["Você gostaria de uma piada tipo 'felipe' ou uma boa?"],
+     "context_set": "contarpiada"
+    },
+    {"tag": "piadafelipe",
+     "patterns": ["felipe"],
+     "responses": ["Do que diabo morreu? De diabetes...."],
+     "context_filter": "contarpiada"
+    },
+    {"tag": "piadaboa",
+     "patterns": ["uma boa", "boa"],
+     "responses": ["O que é preciso para reunir os Beatles? Mais duas balas..."],
+     "context_filter": "contarpiada"
+    }
+]
+}
